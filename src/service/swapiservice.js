@@ -20,7 +20,7 @@ class SwapiService {
 	getPerson = async (id) => {
 		return await this.getResource(`people/${id}/`);
 	};
-	getPlanets = async (id) => {
+	getPlanet = async (id) => {
 		return await this.getResource(`planets/${id}/`);
 	};
 	getAllStarships = async () => {
@@ -31,6 +31,8 @@ class SwapiService {
 		return await this.getResource(`starships/${id}`)
 	}
 }
+
+export default SwapiService;
 
 // (async () => {
 // 	const swapi = new SwapiService();

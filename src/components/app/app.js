@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import Header from '../header';
-import PlanetsDetails from '../planets-details';
+import RandomPlanet from '../random-planet';
 import PersonDetails from '../person-details';
 
 import logo from '../../logo.svg';
@@ -14,7 +14,7 @@ export default class App extends Component {
           <Header />
           <div className="container">
             <div className="mb-5">
-              <PlanetsDetails />
+              <RandomPlanet />
             </div>
 
             <div className="row">
