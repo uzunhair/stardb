@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
-
 import logo from '../../logo.svg';
 
 export default class Navbar extends Component {
+    state = {
+        navbarItems: [
+            {id: 1, title: 'People', link: '/'},
+            {id: 2, title: 'Planets', link: '/'},
+            {id: 3, title: 'Starships', link: '/'},
+        ]
+    };
 
     render() {
 
         const brand = "StarDB";
-        const { navbarItems } = this.props;
-
+        const { navbarItems } = this.state;
         const navbarItemsMap = navbarItems.map((item) => {
 
             const {id, title, link,} = item;
@@ -20,8 +25,6 @@ export default class Navbar extends Component {
             )
 
         });
-
-        console.log(navbarItems);
 
         return (
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark py-0 mb-5">
@@ -36,11 +39,12 @@ export default class Navbar extends Component {
                             {navbarItemsMap}
                         </ul>
 
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">Profile</a>
-                            </li>
-                        </ul>
+                        <form className="form-inline my-2 my-lg-0">
+                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-light my-2 my-sm-0" type="submit">
+                                <i className="fa fa-search"></i>
+                            </button>
+                        </form>
 
                     </div>
                 </div>
