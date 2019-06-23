@@ -6,11 +6,11 @@ export default class RandomPlanet extends Component {
 	swapiService = new SwapiService();
 
 	state = {
-		id: null,
+		id: 2,
 		name: null,
 		population: null,
 		rotationPeriod: null,
-		diameter: null
+		diameter: null,
 	};
 
 	constructor() {
@@ -19,24 +19,27 @@ export default class RandomPlanet extends Component {
 	}
 
 	updatePlanet() {
-		const id = 5;
-		this.swapiService.getPlanet(id).then((planet) => {
-			this.setState({
-				id,
-				name: planet.name,
-				population: planet.population,
-				rotationPeriod: planet.rotation_period,
-				diameter: planet.diameter
-			})
+		this.swapiService.getAllPlanet().then( ({count}) => {
+			const minId = 1;
+			const maxId = count/2.5;
+			const randomPlanetId = Math.floor(Math.random() * (maxId - minId)) + minId;
+
+			this.swapiService.getPlanet(randomPlanetId).then((planet) => {
+				this.setState({
+					id: randomPlanetId,
+					name: planet.name,
+					population: planet.population,
+					rotationPeriod: planet.rotation_period,
+					diameter: planet.diameter
+				})
+			});
 		});
 	}
 
 	render() {
 
-		//console.log(this.swapiService);
-
 		const {id, name, population, rotationPeriod, diameter} = this.state;
-
+		console.log(id)
 		return (
 			<>
 				<div className="card mb-3">
