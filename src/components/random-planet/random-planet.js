@@ -19,9 +19,8 @@ export default class RandomPlanet extends Component {
 	}
 
 	updatePlanet() {
-		this.swapiService.getAllPlanet().then( ({count}) => {
 			const minId = 1;
-			const maxId = count/2.5;
+			const maxId = 20;
 			const randomPlanetId = Math.floor(Math.random() * (maxId - minId)) + minId;
 
 			this.swapiService.getPlanet(randomPlanetId).then((planet) => {
@@ -33,13 +32,12 @@ export default class RandomPlanet extends Component {
 					diameter: planet.diameter
 				})
 			});
-		});
 	}
 
 	render() {
 
 		const {id, name, population, rotationPeriod, diameter} = this.state;
-		console.log(id)
+
 		return (
 			<>
 				<div className="card mb-3">
